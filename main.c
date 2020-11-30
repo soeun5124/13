@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "keyword.h"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 is_whitespace(char c)
 {
 	if (c == ' ' ||
 	    c == '\n' ||
 	    c == '\r' ||
-	    c == '\t')
+	    c == '\t' ||
+		c == '(')
 	    return 1;
 	
 	return 0;
 	    
 	
 	
-	
+	 
 }
 int fget_word(FILE *fp, char* word) {
 	
@@ -63,14 +64,14 @@ int main(int argc, char *argv[]) {
 	    return -1;
 	
 	}
-	cnt = fget_word(fp,word);
-	printf("%s (%i)\n", word, cnt);
 	
-	cnt = fget_word(fp,word);
-	printf("%s (%i)\n", word, cnt);
+	while(fget_word(fp,word) != 0)
+	{
+		count_word(word);
+	}
 	
-	cnt = fget_word(fp,word);
-	printf("%s (%i)\n", word, cnt);
+	printf_word(); 
+
 
 	
 
